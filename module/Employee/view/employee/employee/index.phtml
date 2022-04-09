@@ -1,0 +1,35 @@
+<?php 
+$title = 'Employee application'; 
+$this->headTitle($title); 
+?>  
+<p><a class = "addemp" href="<?php echo $this->url('employee',array('action'=>'add'));?>">Add Employee</a></p>
+
+<table class="table table-striped table-bordered dataTable" id = "emptable"> 
+   <tr> 
+      <th>Employee Id</th> 
+      <th>Employee Name</th> 
+	  <th>Address</th> 
+	  <th>Email Address</th> 
+	  <th>Phone</th> 
+	  <th>Date of Birth</th> 
+	  <th>Employee Image</th> 
+      <th>Action</th>
+   </tr> 
+   <?php foreach ($data as $empdata) : ?> 
+   <tr>  
+		<td><?php echo $this->escapeHtml($empdata->employee_id);?></td> 
+		<td><?php echo $this->escapeHtml($empdata->employee_name);?></td>
+		<td><?php echo $this->escapeHtml($empdata->address);?></td>
+		<td><?php echo $this->escapeHtml($empdata->email_address);?></td>
+		<td><?php echo $this->escapeHtml($empdata->phone);?></td>
+		<td><?php echo $this->escapeHtml($empdata->date_of_birth);?></td>
+		<td><a href="public/uploads/<?php echo $this->escapeHtml($empdata->employee_image);?>" target="_blank"><?php echo $this->escapeHtml($empdata->employee_image);?></a></td>	  
+      <td> 
+         <a href="<?php echo $this->url('employee', 
+            array('action'=>'edit', 'id' =>$empdata->employee_id));?>">Edit</a> 
+         <a href="<?php echo $this->url('employee', 
+            array('action'=>'delete', 'id' => $empdata->employee_id));?>">Delete</a> 
+      </td> 
+   </tr> 
+   <?php endforeach; ?> 
+</table>

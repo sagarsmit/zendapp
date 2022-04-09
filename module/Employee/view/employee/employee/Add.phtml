@@ -1,0 +1,20 @@
+<?php 
+   $title = 'Add new employee'; 
+   $this->headTitle($title); 
+?> 
+<h1><?php echo $this->escapeHtml($title); ?></h1><br/>  
+
+<?php 
+$form->setAttribute('action', $this->url('employee', array('action' => 'add'))); 
+$form->prepare(); 
+echo $this->form()->openTag($form); 
+echo $this->formHidden($form->get('employee_id')); 
+echo $this->formRow($form->get('employee_name'))."<br>";
+echo $this->formRow($form->get('address'))."<br>"; 
+echo $this->formRow($form->get('email_address'))."<br>"; 
+echo $this->formRow($form->get('phone'))."<br>"; 
+echo $this->formRow($form->get('date_of_birth'))."<br>"; 
+echo $this->formRow($form->get('employee_image'))."<br>";   
+echo $this->formSubmit($form->get('submit')); 
+echo $this->form()->closeTag(); 
+?>
